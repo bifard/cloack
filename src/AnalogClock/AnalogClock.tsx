@@ -1,27 +1,32 @@
 import React, {useEffect, useRef} from "react";
-
+import { DateState } from "../store/date/dateReducer";
 import { tick } from "./canvasTick";
+import style from './style.module.css'
 
 interface IPropsAnalogClock {
+  date: DateState,
   timeZone: number;
   width?: number,
   height?: number,
 }
-export const AnalogClock = ({timeZone, width = 200, height = 200,}:IPropsAnalogClock) =>{
+export const AnalogClock = ({timeZone, width = 200, height = 200, date}:IPropsAnalogClock) =>{
   const canvas = useRef<HTMLCanvasElement>(null);
-
+  
   useEffect(()=>{
-    const ctx = canvas.current?.getContext('2d');
-    ctx?.translate(width/2,height/2);
-    setInterval(()=>{
-      if(ctx !== null && ctx !== undefined){
-        const datee = new Date()
-        tick(datee,width-20,height-20,timeZone,ctx);
-      }
-    })
-  }, [canvas, timeZone, width, height])
+  const ctx = canvas.current?.getContext('2d')
+  ctx?.translate(width/2,height/2);
+  if(ctx !== null && ctx !== undefined){
+    tick(date,width-20,height-20,timeZone,ctx);
+  }
+  return ()=>{
+    ctx?.translate(-width/2,-height/2);
+  }
+  })
+
 
   return (
-     <canvas ref={canvas} width={width} height={height}></canvas>
+    <div className={style.container}>
+       <canvas ref={canvas} width={width} height={height}></canvas>
+    </div>
   );
 }

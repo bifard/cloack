@@ -1,13 +1,14 @@
-import { getRadiant } from "../utils/getRadiant";
+import { DateState } from "../store/date/dateReducer";
+import { getRadiant } from "../utils/utils";
 import { corner, cornerHours, cornerMinuts, cornerSec } from "./corner";
 
-export function tick(date: Date, width: number, height: number, timeZone: number = 0, ctx: CanvasRenderingContext2D | null | undefined) {
+export function tick(date: DateState, width: number, height: number, timeZone: number = 0, ctx: CanvasRenderingContext2D | null | undefined) {
   //get sec, minutes, hours
-  const milSec = date.getMilliseconds();
-  const sec = date.getSeconds();
-  const minutes = date.getMinutes();
-  let hours = date.getUTCHours() + timeZone;
+  let {milSec, sec, minutes, hours } = date;
+  
+  hours += timeZone;
   hours = hours > 11 ? hours - 12 : hours;
+ 
 
   ctx?.clearRect(-width / 2, -height / 2, width, height); // Очищаем холст
   ctx?.beginPath();
