@@ -6,16 +6,16 @@ import { DateState } from './store/date/dateReducer';
 import { IItemListClock } from './store/listClock/listClockReducer';
 import { RootState } from './store/reducer';
 import { timezoneRequestAsync } from './store/timezone/timezoneActions';
+import { TimezoneState } from './store/timezone/timezoneReducer';
 import style from './style.module.css'
 
 export function App() {
   const date = useSelector<RootState, DateState>(state => state.date);
   const listClock = useSelector<RootState, Array<IItemListClock>>(state => state.listClock);
+  const {loading} = useSelector<RootState,TimezoneState>(state=>state.timezone)
   const dispatch = useDispatch();
   useEffect(()=>{
-    setTimeout(()=>{
       dispatch(timezoneRequestAsync())
-    }, 5000)
   }, [dispatch])
   
   useEffect(()=>{
@@ -32,13 +32,13 @@ export function App() {
       clearInterval(timer);
     }
   }, [dispatch])
-  
+
   return (
     <div className={style.container}>
-      {
-        listClock.map((item)=>(
+      { !loading ?  
+        (listClock.map((item)=>(
           <Clock key={item.id} date={date} timeZone={item.timeZone} name={item.name} id={item.id} dropdownIsOpen = {item.isOpen}/>
-        ))
+        ))): 'Loading....'
       }
     </div>
   );

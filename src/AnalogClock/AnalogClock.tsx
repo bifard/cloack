@@ -9,7 +9,7 @@ interface IPropsAnalogClock {
   width?: number,
   height?: number,
 }
-export const AnalogClock = ({timeZone, width = 200, height = 200, date}:IPropsAnalogClock) =>{
+export const AnalogClock = ({timeZone, width = 220, height = 220, date}:IPropsAnalogClock) =>{
   const canvas = useRef<HTMLCanvasElement>(null);
   
   useEffect(()=>{

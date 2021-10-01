@@ -1,7 +1,8 @@
 import { Action, ActionCreator} from "redux";
 import { ThunkAction } from "redux-thunk";
+import { getListClock } from "../../utils/utils";
+import { updateListClock } from "../listClock/listClockAction";
 import { ITimezone, TimezoneState} from "./timezoneReducer";
-
 
 export type TimezoneAction = TimezoneRequestAction | TimezoneRequestSuccessAction | TimezoneRequestErrorAction;
 
@@ -37,10 +38,16 @@ export const timezoneRequestError : ActionCreator<TimezoneRequestErrorAction> = 
   error,
 })
 
-export const timezoneRequestAsync = () : ThunkAction<void, TimezoneState, unknown, Action<string>> => (dispatch, getState) => {
+
+export const timezoneRequestAsync = () : ThunkAction<void, TimezoneState, unknown, Action<string>> => (dispatch) => {
   dispatch(timezoneRequest());
-  fetch('http://localhost:3000/tt.json', {})
+  fetch('http://localhost:3000/timezone.json', {})
   .then(res => res.json())
-  .then(data => dispatch(timezoneRequestSuccess(data)))
+  .then(data => {
+    setTimeout(()=>dispatch(timezoneRequestSuccess(data)),2000);
+    return data[0];
+  })
+  .then(firstItem => dispatch(updateListClock(getListClock(firstItem, 2)))
+  )
   .catch(error => dispatch(timezoneRequestError(error.toString())))
 }

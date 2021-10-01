@@ -21,10 +21,10 @@ export const ISListClock: Array<IItemListClock> = [
     timeZone: +10,
     name: "Владивосток",
     isOpen: false,
-  }, 
+  },
 ]
 
-export const listClockReducer: Reducer<Array<IItemListClock>, updateListClockAction> = (state = ISListClock, action) => {
+export const listClockReducer: Reducer<Array<IItemListClock>, updateListClockAction> = (state, action) => {
   switch(action.type){
     case UPDATE_LIST_CLOCK:
       return [

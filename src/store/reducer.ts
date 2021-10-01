@@ -1,7 +1,7 @@
 import { Reducer } from "redux";
 import { UPDATE_DATE } from "./date/dateActions";
 import { dateInitialState, dateReducer, DateState } from "./date/dateReducer";
-import { IItemListClock, ISListClock, listClockReducer } from "./listClock/listClockReducer";
+import { IItemListClock, listClockReducer } from "./listClock/listClockReducer";
 import { UPDATE_LIST_CLOCK } from "./listClock/listClockAction";
 import { TimezoneAction, TIMEZONE_REQUEST, TIMEZONE_REQUEST_ERROR, TIMEZONE_REQUEST_SUCCESS } from "./timezone/timezoneActions";
 import { timezoneReducer, TimezoneState} from "./timezone/timezoneReducer";
@@ -19,7 +19,7 @@ const initialState: RootState= {
     error: '',
     data: []
   },
-  listClock: ISListClock,
+  listClock: [],
 }
 type MyAction = TimezoneAction;
 export const rootReducer: Reducer<RootState, MyAction | any> = (state = initialState, action) => {
