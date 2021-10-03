@@ -4,49 +4,11 @@
   align-items: center;
   justify-content: center;
 }
-.button {
-  position: relative;
-  cursor: pointer;
-  padding-right: 40px;
-  margin-bottom: 5px;
-}
-.button::after{
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  content: '';
-  display: block;
-  width: 5px;
-  height: 5px;
-  border-left: 3px solid black;
-  border-bottom: 3px solid black;
-  transform: rotate(315deg);
-}
 
-.list {
-  padding: 0%;
-  border: 1px solid black;
-  border-radius: 5px;
-  display: flex;
-  flex-direction: column;
-}
-.list li {
-  border-bottom: 1px solid black;
-  padding: 3px;
-  list-style-type: none;
-  background-color: white;
-  display: flex;
-  flex-direction: column;
+
+.select{
   cursor: pointer;
 }
-.list li:hover {
-  background-color: rgba(0, 26, 255, 0.637);
-}
-.list li:nth-child(1) {
-  border-radius: 5px 5px 0 0;
-  
-}
-.list li:last-child {
-  border: none;
-  
+.option {
+  cursor: pointer;
 }
