@@ -4,11 +4,6 @@
   align-items: center;
   justify-content: center;
 }
-
-
 .select{
-  cursor: pointer;
-}
-.option {
   cursor: pointer;
 }

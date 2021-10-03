@@ -26,7 +26,6 @@ export const Dropdown = ({ list, name, id, isOpen }: IPropsDropdown) => {
       <select className={style.select} onChange={e => onChange(e)}>
         {list.map((item, index) => (
           <option 
-            className ={style.option}
             value={item.name}
             key={index}
             id={item.name + id}
