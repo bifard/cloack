@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateListClock } from "../store/listClock/listClockAction";
 import { IItemListClock } from "../store/listClock/listClockReducer";
 import { RootState } from "../store/reducer";
-import { ITimezone } from "../store/timezone/timezoneReducer";
+import { ITimezone } from "../store/timezoneReducer";
 import style from './dropdown.module.css'
 
 interface IPropsDropdown {

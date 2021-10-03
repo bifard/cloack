@@ -1,8 +1,8 @@
 import { Action, ActionCreator} from "redux";
 import { ThunkAction } from "redux-thunk";
-import { getListClock } from "../../utils/utils";
+import { api, getListClock } from "../../utils/utils";
 import { updateListClock } from "../listClock/listClockAction";
-import { ITimezone, TimezoneState} from "./timezoneReducer";
+import { ITimezone, TimezoneState} from "../timezoneReducer";
 
 export type TimezoneAction = TimezoneRequestAction | TimezoneRequestSuccessAction | TimezoneRequestErrorAction;
 
@@ -38,11 +38,13 @@ export const timezoneRequestError : ActionCreator<TimezoneRequestErrorAction> = 
   error,
 })
 
-
+export interface ITimeZoneApiDate {
+  name: string,
+  timezone: string,
+}
 export const timezoneRequestAsync = () : ThunkAction<void, TimezoneState, unknown, Action<string>> => (dispatch) => {
   dispatch(timezoneRequest());
-  fetch('http://localhost:3000/timezone.json', {})
-  .then(res => res.json())
+  api<Array<ITimeZoneApiDate>>('https://clock-pied.vercel.app/timezone.json')
   .then(data => {
     setTimeout(()=>dispatch(timezoneRequestSuccess(data)),2000);
     return data[0];

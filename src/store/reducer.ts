@@ -4,7 +4,7 @@ import { dateInitialState, dateReducer, DateState } from "./date/dateReducer";
 import { IItemListClock, listClockReducer } from "./listClock/listClockReducer";
 import { UPDATE_LIST_CLOCK } from "./listClock/listClockAction";
 import { TimezoneAction, TIMEZONE_REQUEST, TIMEZONE_REQUEST_ERROR, TIMEZONE_REQUEST_SUCCESS } from "./timezone/timezoneActions";
-import { timezoneReducer, TimezoneState} from "./timezone/timezoneReducer";
+import { timezoneReducer, TimezoneState} from "./timezoneReducer";
 
 export type RootState = {
   timezone: TimezoneState,
