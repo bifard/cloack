@@ -4,7 +4,7 @@ import { AnalogClock } from "../AnalogClock/AnalogClock";
 import { DigitalClock } from "../DigitalClock/DigitalClock";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { RootState } from "../store/reducer";
-import { TimezoneState } from "../store/timezoneReducer";
+import { TimezoneState } from "../store/timezone/timezoneReducer";
 import style from './clock.module.css';
 
 interface IClockProps {

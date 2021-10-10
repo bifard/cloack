@@ -6,7 +6,7 @@ import { DateState } from './store/date/dateReducer';
 import { IItemListClock } from './store/listClock/listClockReducer';
 import { RootState } from './store/reducer';
 import { timezoneRequestAsync } from './store/timezone/timezoneActions';
-import { TimezoneState } from './store/timezoneReducer';
+import { TimezoneState } from './store/timezone/timezoneReducer';
 import style from './style.module.css'
 
 export function App() {

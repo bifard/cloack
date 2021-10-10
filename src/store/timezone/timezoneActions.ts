@@ -2,7 +2,7 @@ import { Action, ActionCreator} from "redux";
 import { ThunkAction } from "redux-thunk";
 import { api, getListClock } from "../../utils/utils";
 import { updateListClock } from "../listClock/listClockAction";
-import { ITimezone, TimezoneState} from "../timezoneReducer";
+import { ITimezone, TimezoneState} from "./timezoneReducer";
 
 export type TimezoneAction = TimezoneRequestAction | TimezoneRequestSuccessAction | TimezoneRequestErrorAction;
 
